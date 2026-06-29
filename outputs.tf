@@ -3,9 +3,9 @@ output "auth_role_name" {
   value       = vault_jwt_auth_backend_role.this.role_name
 }
 
-output "gitlab_instance" {
-  description = "Echo of gitlab_instance input."
-  value       = var.gitlab_instance
+output "gitlab_instance_name" {
+  description = "Echo of gitlab_instance_name input."
+  value       = var.gitlab_instance_name
 }
 
 output "entity_id" {

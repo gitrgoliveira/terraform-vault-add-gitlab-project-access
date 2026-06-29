@@ -4,18 +4,18 @@ run "defaults_plan_succeeds" {
   command = plan
 
   variables {
-    bound_audiences     = ["vault"]
-    gitlab_instance     = "dev-cluster"
-    gitlab_project_id   = "12345"
-    gitlab_project_path = "group/project"
-    jwt_auth_path       = "jwt/dev-cluster"
-    jwt_mount_accessor  = "auth_jwt_deadbeef"
-    principal_name      = "payments"
+    bound_audiences      = ["vault"]
+    gitlab_instance_name = "cloud"
+    gitlab_project_id    = "12345"
+    gitlab_project_path  = "group/project"
+    jwt_auth_path        = "jwt/dev-cluster"
+    jwt_mount_accessor   = "auth_jwt_deadbeef"
+    principal_name       = "payments"
   }
 
   assert {
-    condition     = output.gitlab_instance == "dev-cluster"
-    error_message = "gitlab_instance output should echo input."
+    condition     = output.gitlab_instance_name == "cloud"
+    error_message = "gitlab_instance_name output should echo input."
   }
 
   assert {
@@ -24,7 +24,7 @@ run "defaults_plan_succeeds" {
   }
 
   assert {
-    condition     = output.auth_role_name == "dev-cluster-payments"
-    error_message = "auth_role_name should be derived as <gitlab_instance>-<principal_name>."
+    condition     = output.auth_role_name == "cloud-payments"
+    error_message = "auth_role_name should be derived as <gitlab_instance_name>-<principal_name>."
   }
 }

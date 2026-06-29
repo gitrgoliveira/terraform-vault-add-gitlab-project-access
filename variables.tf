@@ -4,13 +4,13 @@ variable "bound_audiences" {
   default     = ["vault"]
 }
 
-variable "gitlab_instance" {
+variable "gitlab_instance_name" {
   type        = string
-  description = "GitLab instance/scope identifier from trust module outputs."
+  description = "GitLab instance scope from trust module outputs."
 
   validation {
-    condition     = can(regex("^[a-z][a-z0-9-]{0,30}[a-z0-9]$", var.gitlab_instance))
-    error_message = "gitlab_instance must match ^[a-z][a-z0-9-]{0,30}[a-z0-9]$."
+    condition     = contains(["cloud", "dedicated_prod", "dedicated_dev"], var.gitlab_instance_name)
+    error_message = "gitlab_instance_name must be one of: cloud, dedicated_prod, dedicated_dev."
   }
 }
 

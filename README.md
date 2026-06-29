@@ -15,7 +15,7 @@ Principal. This module creates identity and login, but no secret policy grants.
 
 | Name | Type | Description |
 |---|---|---|
-| `gitlab_instance` | `string` | GitLab instance/scope identifier, regex validated |
+| `gitlab_instance_name` | `string` | One of `cloud`, `dedicated_prod`, `dedicated_dev` |
 | `principal_name` | `string` | Principal identifier, regex validated |
 | `jwt_auth_path` | `string` | Trust mount path |
 | `jwt_mount_accessor` | `string` | Trust mount accessor |
@@ -31,7 +31,7 @@ Principal. This module creates identity and login, but no secret policy grants.
 |---|---|
 | `entity_id` | Entity ID for downstream use-case modules |
 | `auth_role_name` | JWT role name used by pipeline login |
-| `gitlab_instance` | Echo |
+| `gitlab_instance_name` | Echo |
 | `principal_name` | Echo |
 
 ## No-code notes
@@ -47,9 +47,9 @@ module "add_gitlab_project" {
   source  = "app.terraform.io/<org>/add-gitlab-project-access/vault"
   version = "~> 0.1"
 
-  gitlab_instance     = "gitlab-com"
+  gitlab_instance_name = "cloud"
   principal_name      = "billing-ci"
-  jwt_auth_path       = "jwt-gitlab/gitlab-com"
+  jwt_auth_path       = "jwt-gitlab/cloud"
   jwt_mount_accessor  = "auth_jwt_87654321"
   gitlab_project_id   = "48261734"
   gitlab_project_path = "group/billing-service"
