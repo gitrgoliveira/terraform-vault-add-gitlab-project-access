@@ -47,7 +47,7 @@ This module no longer takes the trust mount path or accessor as inputs. Both are
 
 ## No-code provisioning
 
-This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.0.4`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `gitlab_instance_name` is presented as a **dropdown** limited to `cloud`, `dedicated_prod`, `dedicated_dev`. The trust mount path and accessor are derived from `gitlab_instance_name`, so they are no longer form fields.
+This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.0.5`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `gitlab_instance_name` is presented as a **dropdown** limited to `cloud`, `dedicated_prod`, `dedicated_dev`. The trust mount path and accessor are derived from `gitlab_instance_name`, so they are no longer form fields.
 
 Form fields:
 
@@ -63,7 +63,7 @@ Form fields:
 ```hcl
 module "add_gitlab_project" {
   source  = "app.terraform.io/<org>/add-gitlab-project-access/vault"
-  version = "~> 0.0.4"
+  version = "~> 0.0.5"
 
   gitlab_instance_name = "cloud"
   principal_name      = "billing-ci"

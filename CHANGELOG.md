@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.0.5] - 2026-06-29
+
+### Changed
+- Aligned the `gitlab_instance_name` input description with the `gitlab-onboarding` trust module. It now reads "GitLab instance scope used in trust mount naming" and clarifies the value must match the trust module, correcting the misleading "from trust module outputs" wording shown in the no-code form.
+
 ## [0.0.4] - 2026-06-29
 
 ### Changed

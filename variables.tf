@@ -6,7 +6,7 @@ variable "bound_audiences" {
 
 variable "gitlab_instance_name" {
   type        = string
-  description = "GitLab instance scope from trust module outputs."
+  description = "GitLab instance scope used in trust mount naming. Must match the gitlab_instance_name used in the gitlab-onboarding trust module."
 
   validation {
     condition     = contains(["cloud", "dedicated_prod", "dedicated_dev"], var.gitlab_instance_name)
