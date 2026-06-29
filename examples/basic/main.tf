@@ -4,8 +4,8 @@ terraform {
 
 locals {
   trust_bound_audiences = ["https://vault.example.com"]
-  trust_cluster_name    = "ocp-prod-eu"
-  trust_jwt_auth_path   = "jwt-gitlab/ocp-prod-eu"
+  trust_gitlab_instance = "gitlab-com"
+  trust_jwt_auth_path   = "jwt-gitlab/gitlab-com"
   trust_mount_accessor  = "auth_jwt_87654321"
 }
 
@@ -13,7 +13,7 @@ module "add_gitlab_project" {
   source = "../../"
 
   bound_audiences     = local.trust_bound_audiences
-  cluster_name        = local.trust_cluster_name
+  gitlab_instance     = local.trust_gitlab_instance
   gitlab_project_id   = var.gitlab_project_id
   gitlab_project_path = var.gitlab_project_path
   jwt_auth_path       = local.trust_jwt_auth_path

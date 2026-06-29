@@ -4,13 +4,13 @@ variable "bound_audiences" {
   default     = ["vault"]
 }
 
-variable "cluster_name" {
+variable "gitlab_instance" {
   type        = string
-  description = "Cluster identifier from trust module outputs."
+  description = "GitLab instance/scope identifier from trust module outputs."
 
   validation {
-    condition     = can(regex("^[a-z][a-z0-9-]{0,30}[a-z0-9]$", var.cluster_name))
-    error_message = "cluster_name must match ^[a-z][a-z0-9-]{0,30}[a-z0-9]$."
+    condition     = can(regex("^[a-z][a-z0-9-]{0,30}[a-z0-9]$", var.gitlab_instance))
+    error_message = "gitlab_instance must match ^[a-z][a-z0-9-]{0,30}[a-z0-9]$."
   }
 }
 

@@ -3,7 +3,7 @@ provider "vault" {
 }
 
 locals {
-  auth_role_name = "${var.cluster_name}-${var.principal_name}"
+  auth_role_name = "${var.gitlab_instance}-${var.principal_name}"
 }
 
 resource "vault_identity_entity" "this" {

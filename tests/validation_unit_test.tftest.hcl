@@ -5,7 +5,7 @@ run "invalid_principal_name_fails_validation" {
 
   variables {
     bound_audiences     = ["vault"]
-    cluster_name        = "dev-cluster"
+    gitlab_instance     = "dev-cluster"
     gitlab_project_id   = "12345"
     gitlab_project_path = "group/project"
     jwt_auth_path       = "jwt/dev-cluster"
@@ -18,12 +18,12 @@ run "invalid_principal_name_fails_validation" {
   ]
 }
 
-run "invalid_cluster_name_fails_validation" {
+run "invalid_gitlab_instance_fails_validation" {
   command = plan
 
   variables {
     bound_audiences     = ["vault"]
-    cluster_name        = "-bad"
+    gitlab_instance     = "-bad"
     gitlab_project_id   = "12345"
     gitlab_project_path = "group/project"
     jwt_auth_path       = "jwt/dev-cluster"
@@ -32,6 +32,6 @@ run "invalid_cluster_name_fails_validation" {
   }
 
   expect_failures = [
-    var.cluster_name,
+    var.gitlab_instance,
   ]
 }
