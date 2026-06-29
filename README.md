@@ -40,6 +40,21 @@ Principal. This module creates identity and login, but no secret policy grants.
 - `token_policies` on the principal login role is intentionally empty.
 - Policy grants are attached later through use-case identity groups.
 
+## No-code provisioning
+
+This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.0.3`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `gitlab_instance_name` is presented as a **dropdown** limited to `cloud`, `dedicated_prod`, `dedicated_dev`. Trust outputs from `gitlab-onboarding` feed `jwt_auth_path` and `jwt_mount_accessor`.
+
+Form fields:
+
+| Field | Required | Notes |
+|---|---|---|
+| `gitlab_instance_name` | yes | Dropdown: `cloud` / `dedicated_prod` / `dedicated_dev` |
+| `principal_name` | yes | Principal identifier |
+| `jwt_auth_path` | yes | From trust module |
+| `jwt_mount_accessor` | yes | From trust module |
+| `gitlab_project_id` | yes | Numeric project ID |
+| `gitlab_project_path` | yes | `group/project` claim |
+
 ## Registry usage
 
 ```hcl
