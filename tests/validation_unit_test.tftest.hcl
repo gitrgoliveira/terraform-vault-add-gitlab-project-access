@@ -8,8 +8,6 @@ run "invalid_principal_name_fails_validation" {
     gitlab_instance_name = "cloud"
     gitlab_project_id    = "12345"
     gitlab_project_path  = "group/project"
-    jwt_auth_path        = "jwt/dev-cluster"
-    jwt_mount_accessor   = "auth_jwt_deadbeef"
     principal_name       = "INVALID_NAME"
   }
 
@@ -26,8 +24,6 @@ run "invalid_gitlab_instance_name_fails_validation" {
     gitlab_instance_name = "-bad"
     gitlab_project_id    = "12345"
     gitlab_project_path  = "group/project"
-    jwt_auth_path        = "jwt/dev-cluster"
-    jwt_mount_accessor   = "auth_jwt_deadbeef"
     principal_name       = "payments"
   }
 

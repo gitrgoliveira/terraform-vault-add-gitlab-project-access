@@ -24,16 +24,6 @@ variable "gitlab_project_path" {
   description = "GitLab project path (group/project) used in bound_claims."
 }
 
-variable "jwt_auth_path" {
-  type        = string
-  description = "JWT auth backend path from trust module output."
-}
-
-variable "jwt_mount_accessor" {
-  type        = string
-  description = "JWT mount accessor from trust module output."
-}
-
 variable "principal_name" {
   type        = string
   description = "Short principal identifier used in entity and role naming."

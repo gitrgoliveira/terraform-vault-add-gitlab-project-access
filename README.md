@@ -8,8 +8,15 @@ Principal. This module creates identity and login, but no secret policy grants.
 
 ## Prerequisites
 
-- GitLab trust module already provisioned (`jwt_auth_path`, `jwt_mount_accessor`)
+- GitLab trust module already provisioned (`terraform-vault-gitlab-onboarding`) for the same `gitlab_instance_name`
 - Stable GitLab `project_id` and `project_path` values
+
+## Discovered values
+
+This module no longer takes the trust mount path or accessor as inputs. Both are resolved from `gitlab_instance_name`:
+
+- `jwt_auth_path` is derived as `jwt-gitlab/<gitlab_instance_name>`, matching the path the trust module mounts.
+- The JWT mount accessor is discovered at plan time with the `vault_auth_backend` data source on that path.
 
 ## Inputs
 
@@ -17,8 +24,6 @@ Principal. This module creates identity and login, but no secret policy grants.
 |---|---|---|
 | `gitlab_instance_name` | `string` | One of `cloud`, `dedicated_prod`, `dedicated_dev` |
 | `principal_name` | `string` | Principal identifier, regex validated |
-| `jwt_auth_path` | `string` | Trust mount path |
-| `jwt_mount_accessor` | `string` | Trust mount accessor |
 | `gitlab_project_id` | `string` | Stable project ID used as alias name |
 | `gitlab_project_path` | `string` | Bound claim value (`group/project`) |
 | `bound_audiences` | `list(string)` | JWT role bound audiences, default `["vault"]` |
@@ -42,7 +47,7 @@ Principal. This module creates identity and login, but no secret policy grants.
 
 ## No-code provisioning
 
-This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.0.3`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `gitlab_instance_name` is presented as a **dropdown** limited to `cloud`, `dedicated_prod`, `dedicated_dev`. Trust outputs from `gitlab-onboarding` feed `jwt_auth_path` and `jwt_mount_accessor`.
+This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.0.4`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `gitlab_instance_name` is presented as a **dropdown** limited to `cloud`, `dedicated_prod`, `dedicated_dev`. The trust mount path and accessor are derived from `gitlab_instance_name`, so they are no longer form fields.
 
 Form fields:
 
@@ -50,8 +55,6 @@ Form fields:
 |---|---|---|
 | `gitlab_instance_name` | yes | Dropdown: `cloud` / `dedicated_prod` / `dedicated_dev` |
 | `principal_name` | yes | Principal identifier |
-| `jwt_auth_path` | yes | From trust module |
-| `jwt_mount_accessor` | yes | From trust module |
 | `gitlab_project_id` | yes | Numeric project ID |
 | `gitlab_project_path` | yes | `group/project` claim |
 
@@ -60,12 +63,10 @@ Form fields:
 ```hcl
 module "add_gitlab_project" {
   source  = "app.terraform.io/<org>/add-gitlab-project-access/vault"
-  version = "~> 0.1"
+  version = "~> 0.0.4"
 
   gitlab_instance_name = "cloud"
   principal_name      = "billing-ci"
-  jwt_auth_path       = "jwt-gitlab/cloud"
-  jwt_mount_accessor  = "auth_jwt_87654321"
   gitlab_project_id   = "48261734"
   gitlab_project_path = "group/billing-service"
   bound_audiences     = ["https://vault.example.com"]

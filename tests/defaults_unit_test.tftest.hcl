@@ -8,8 +8,6 @@ run "defaults_plan_succeeds" {
     gitlab_instance_name = "cloud"
     gitlab_project_id    = "12345"
     gitlab_project_path  = "group/project"
-    jwt_auth_path        = "jwt/dev-cluster"
-    jwt_mount_accessor   = "auth_jwt_deadbeef"
     principal_name       = "payments"
   }
 

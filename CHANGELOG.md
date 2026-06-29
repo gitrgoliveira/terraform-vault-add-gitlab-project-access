@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.0.4] - 2026-06-29
+
+### Changed
+- Removed the `jwt_auth_path` and `jwt_mount_accessor` inputs. The mount path is now derived as `jwt-gitlab/<gitlab_instance_name>` and the mount accessor is discovered via a `vault_auth_backend` data source. Breaking change for v0.0.3 consumers.
+
 ## [0.0.3] - 2026-06-29
 
 ### Changed
