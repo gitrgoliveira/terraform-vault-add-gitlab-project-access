@@ -3,7 +3,7 @@ provider "vault" {
 }
 
 locals {
-  auth_role_name = "${var.gitlab_instance_name}-${var.principal_name}"
+  auth_role_name = "${var.gitlab_instance_name}-${var.workload_name}"
 
   # The trust module (terraform-vault-gitlab-onboarding) always mounts the JWT
   # auth backend at jwt-gitlab/<gitlab_instance_name>. Derive the same path here

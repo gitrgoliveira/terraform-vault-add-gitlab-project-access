@@ -1,6 +1,6 @@
 mock_provider "vault" {}
 
-run "invalid_principal_name_fails_validation" {
+run "invalid_workload_name_fails_validation" {
   command = plan
 
   variables {
@@ -8,11 +8,11 @@ run "invalid_principal_name_fails_validation" {
     gitlab_instance_name = "cloud"
     gitlab_project_id    = "12345"
     gitlab_project_path  = "group/project"
-    principal_name       = "INVALID_NAME"
+    workload_name        = "INVALID_NAME"
   }
 
   expect_failures = [
-    var.principal_name,
+    var.workload_name,
   ]
 }
 
@@ -24,7 +24,7 @@ run "invalid_gitlab_instance_name_fails_validation" {
     gitlab_instance_name = "-bad"
     gitlab_project_id    = "12345"
     gitlab_project_path  = "group/project"
-    principal_name       = "payments"
+    workload_name        = "payments"
   }
 
   expect_failures = [

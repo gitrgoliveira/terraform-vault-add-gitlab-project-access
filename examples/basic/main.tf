@@ -14,7 +14,7 @@ module "add_gitlab_project" {
   gitlab_instance_name = local.trust_gitlab_instance
   gitlab_project_id    = var.gitlab_project_id
   gitlab_project_path  = var.gitlab_project_path
-  principal_name       = var.principal_name
+  workload_name        = var.workload_name
 }
 
 variable "gitlab_project_id" {
@@ -27,7 +27,7 @@ variable "gitlab_project_path" {
   description = "GitLab project path as group/project."
 }
 
-variable "principal_name" {
+variable "workload_name" {
   type        = string
-  description = "Principal identifier used in entity and role naming."
+  description = "Workload identifier used in entity and role naming."
 }

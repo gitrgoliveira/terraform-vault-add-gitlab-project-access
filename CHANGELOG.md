@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.1.0] - 2026-07-07
+
+### Changed
+- BREAKING: renamed the `principal_name` input and output to `workload_name` to align with the "workload" onboarding terminology. Consumers must update the input name and any reads of the `principal_name` output.
+
 ## [0.0.5] - 2026-06-29
 
 ### Changed
