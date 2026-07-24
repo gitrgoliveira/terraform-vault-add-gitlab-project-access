@@ -4,7 +4,7 @@ run "invalid_workload_name_fails_validation" {
   command = plan
 
   variables {
-    bound_audiences      = ["vault"]
+    bound_audience       = "vault"
     gitlab_instance_name = "cloud"
     gitlab_project_id    = "12345"
     gitlab_project_path  = "group/project"
@@ -20,7 +20,7 @@ run "invalid_gitlab_instance_name_fails_validation" {
   command = plan
 
   variables {
-    bound_audiences      = ["vault"]
+    bound_audience       = "vault"
     gitlab_instance_name = "-bad"
     gitlab_project_id    = "12345"
     gitlab_project_path  = "group/project"

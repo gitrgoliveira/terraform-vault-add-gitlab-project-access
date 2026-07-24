@@ -2,6 +2,18 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.0] - 2026-07-24
+
+### Changed
+- **Breaking:** `gitlab_instance_name` enum values changed from `dedicated_prod`/`dedicated_dev` to `dedicated-prod`/`dedicated-dev` (hyphens instead of underscores) for consistency with the project identifier regex. No-code dropdown options must be updated in the registry.
+
+## [0.2.0] - 2026-07-24
+
+### Changed
+- BREAKING: renamed the `bound_audiences` input (type `list(string)`) to `bound_audience` (type `string`). Consumers must update the input name and value from a list to a single string.
+- Added validation on `gitlab_project_id` requiring a positive integer.
+- Added validation on `gitlab_project_path` requiring a valid `group/project` format.
+
 ## [0.1.0] - 2026-07-07
 
 ### Changed

@@ -3,14 +3,14 @@ terraform {
 }
 
 locals {
-  trust_bound_audiences = ["https://vault.example.com"]
+  trust_bound_audience  = "https://vault.example.com"
   trust_gitlab_instance = "cloud"
 }
 
 module "add_gitlab_project" {
   source = "../../"
 
-  bound_audiences      = local.trust_bound_audiences
+  bound_audience       = local.trust_bound_audience
   gitlab_instance_name = local.trust_gitlab_instance
   gitlab_project_id    = var.gitlab_project_id
   gitlab_project_path  = var.gitlab_project_path

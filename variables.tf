@@ -1,7 +1,7 @@
-variable "bound_audiences" {
-  type        = list(string)
-  description = "Bound audiences for the workload JWT login role."
-  default     = ["vault"]
+variable "bound_audience" {
+  type        = string
+  description = "JWT audience for Vault authentication."
+  default     = "vault"
 }
 
 variable "gitlab_instance_name" {
@@ -9,19 +9,29 @@ variable "gitlab_instance_name" {
   description = "GitLab instance scope used in trust mount naming. Must match the gitlab_instance_name used in the gitlab-onboarding trust module."
 
   validation {
-    condition     = contains(["cloud", "dedicated_prod", "dedicated_dev"], var.gitlab_instance_name)
-    error_message = "gitlab_instance_name must be one of: cloud, dedicated_prod, dedicated_dev."
+    condition     = contains(["cloud", "dedicated-prod", "dedicated-dev"], var.gitlab_instance_name)
+    error_message = "gitlab_instance_name must be one of: cloud, dedicated-prod, dedicated-dev."
   }
 }
 
 variable "gitlab_project_id" {
   type        = string
   description = "GitLab project numeric ID used as stable alias name and user claim."
+
+  validation {
+    condition     = can(regex("^[1-9][0-9]*$", var.gitlab_project_id))
+    error_message = "gitlab_project_id must be a positive integer."
+  }
 }
 
 variable "gitlab_project_path" {
   type        = string
   description = "GitLab project path (group/project) used in bound_claims."
+
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9_./-]+/[a-zA-Z0-9_./-]+$", var.gitlab_project_path))
+    error_message = "gitlab_project_path must be a valid GitLab project path (e.g. group/project)."
+  }
 }
 
 variable "token_max_ttl" {

@@ -32,7 +32,7 @@ resource "vault_jwt_auth_backend_role" "this" {
   role_name       = local.auth_role_name
   role_type       = "jwt"
   user_claim      = "project_id"
-  bound_audiences = var.bound_audiences
+  bound_audiences = [var.bound_audience]
   token_ttl       = var.token_ttl
   token_max_ttl   = var.token_max_ttl
   token_policies  = []
