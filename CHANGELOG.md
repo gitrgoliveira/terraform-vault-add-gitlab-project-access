@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.1] - 2026-07-29
+
+### Changed
+
+- The no-code UX note now cross-references the gitlab-onboarding module docs instead of duplicating them.
+
 ## [0.3.0] - 2026-07-24
 
 ### Changed
